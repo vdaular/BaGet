@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using BaGet.Core;
 using BaGet.Web;
+using BaGet.Web.Extensions;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

@@ -1,10 +1,11 @@
 using System;
+using System.Text.Json.Serialization;
 using BaGet.Core;
 using BaGet.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BaGet
+namespace BaGet.Web.Extensions
 {
     public static class IServiceCollectionExtensions
     {
@@ -16,10 +17,9 @@ namespace BaGet
                 .AddRouting(options => options.LowercaseUrls = true)
                 .AddControllers()
                 .AddApplicationPart(typeof(PackageContentController).Assembly)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 });
 
             services.AddRazorPages();
